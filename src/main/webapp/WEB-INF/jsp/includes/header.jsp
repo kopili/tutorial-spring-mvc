@@ -15,6 +15,9 @@
 <link href="/public/lib/bootstrap-3.3.7/css/bootstrap.min.css"
 	rel="stylesheet">
 
+<!-- Our CSS -->
+<link href="/public/css/styles.css" rel="stylesheet" >
+
 </head>
 <body>
 	<div class="container">
