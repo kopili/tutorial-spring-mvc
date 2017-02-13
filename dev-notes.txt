@@ -4,6 +4,25 @@
 
 ----------------------------------------------------------------------
 
+Spring Boot 1.5 fix for our Spring Framework Tutorial
+Hello All,
+
+Spring Boot 1.5 has introduced some auto configuration (ValidationAutoConfiguration) that fails if we provide custom validation like we have done. Consequently, the application would fail to start. If you face this issue when coding custom validation (lecture 17), just paste the following code inside our MvcConfig class:
+
+@Bean
+public Validator validator() {
+    LocalValidatorFactoryBean factoryBean = new LocalValidatorFactoryBean();
+    MessageInterpolatorFactory interpolatorFactory = new MessageInterpolatorFactory();
+    factoryBean.setMessageInterpolator(interpolatorFactory.getObject());
+    return factoryBean;
+}
+
+Happy coding,
+
+Sanjay
+
+----------------------------------------------------------------------
+
 # Create user in mysql and give it access to remote host
 
 CREATE USER 'username'@'%' IDENTIFIED BY 'mypassword';
