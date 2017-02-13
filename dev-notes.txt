@@ -1,0 +1,42 @@
+----------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------
+
+# Create user in mysql and give it access to remote host
+
+CREATE USER 'username'@'%' IDENTIFIED BY 'mypassword';
+
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;
+
+CREATE SCHEMA `spring`;
+
+GRANT ALL PRIVILEGES ON spring.* TO 'username'@'%' IDENTIFIED BY 'mypassword';
+
+
+SHOW GRANTS FOR 'username'@'%'
+
+
+
+
+Change mysql config
+
+Start with editing mysql config file
+
+vim /etc/mysql/my.cnf
+Comment out following lines:
+
+#bind-address           = 127.0.0.1
+#skip-networking
+
+If you do not find skip-networking line, add it and comment out it.
+
+Restart mysql server:
+
+~ /etc/init.d/mysql restart
+
+
+----------------------------------------------------------------------
