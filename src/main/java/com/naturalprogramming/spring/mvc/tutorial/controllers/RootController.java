@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.naturalprogramming.spring.mvc.tutorial.dto.SignupForm;
 import com.naturalprogramming.spring.mvc.tutorial.services.UserService;
+import com.naturalprogramming.spring.mvc.tutorial.util.MyUtil;
 
 @Controller
 public class RootController {
@@ -53,9 +54,7 @@ public class RootController {
 		logger.info("Saving signup info to database: " + signupForm.toString());
 		userService.signup(signupForm);
 
-		redirectAttributes.addFlashAttribute("flashKind", "success");
-		redirectAttributes.addFlashAttribute("flashMessage",
-				"Signup successful. Please check your mailbox to verify yourself");
+		MyUtil.flash(redirectAttributes, "success", "signupSuccess");
 
 		return "redirect:/";
 	}
