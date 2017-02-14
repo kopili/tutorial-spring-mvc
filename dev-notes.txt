@@ -1,6 +1,11 @@
 ----------------------------------------------------------------------
 
+Where to find docs e.g. "The authorize Tag" from the Security project:
+http://docs.spring.io/spring-security/site/docs/4.2.2.BUILD-SNAPSHOT/reference/htmlsingle/#taglibs-authorize
 
+more can be found at the following address:
+
+http://docs.spring.io/spring-security/site/docs/4.2.2.BUILD-SNAPSHOT/reference/htmlsingle/#el-access
 
 ----------------------------------------------------------------------
 

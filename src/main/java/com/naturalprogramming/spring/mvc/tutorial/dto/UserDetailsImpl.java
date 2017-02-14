@@ -14,6 +14,14 @@ public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 473773535664086347L;
 	private User user;
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public UserDetailsImpl(User user) {
 		this.user = user;
 	}
