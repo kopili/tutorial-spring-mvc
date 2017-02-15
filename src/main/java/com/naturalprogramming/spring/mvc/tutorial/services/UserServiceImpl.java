@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,10 +20,12 @@ import com.naturalprogramming.spring.mvc.tutorial.repositories.UserRepository;
 public class UserServiceImpl implements UserService, UserDetailsService {
 
 	private UserRepository userRepository;
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public UserServiceImpl(UserRepository userRepository) {
+	public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
 		this.userRepository = userRepository;
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	@Override
@@ -31,7 +34,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		User user = new User();
 		user.setEmail(signupForm.getEmail());
 		user.setName(signupForm.getName());
-		user.setPassword(signupForm.getPassword());
+		user.setPassword(passwordEncoder.encode(signupForm.getPassword()));
 		userRepository.save(user);
 	}
 
