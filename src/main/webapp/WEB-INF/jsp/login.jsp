@@ -33,6 +33,15 @@
 				<form:errors cssClass="error" path="password" />
 			</div>
 
+			<div class="form-group">
+				<div class="checkbox">
+					<label>
+						<!-- name="_spring_security_remember_me" in Boot < 1.3 --> 
+						<input name="remember_me" type="checkbox"> Remember me
+					</label>
+				</div>
+			</div>
+
 			<button type="submit" class="btn btn-primary">Sign In</button>
 
 		</form:form>
