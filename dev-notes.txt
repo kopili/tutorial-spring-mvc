@@ -1,3 +1,27 @@
+Exploring the Spring documentation:
+
+Spring Boot Reference Guide:
+https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/
+
+Spring Framework Reference Documentation:
+https://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/
+From 7.4.3. Using depends-on and 7.4.4. Lazy-initialized beans onward for the beans is all interesting
+
+Spring Guides:
+
+https://spring.io/guides/
+You can import the projects from the guides by Spring Tool Suite -> File -> New -> Import Spring Getting Started Content
+
+Samples in GitHub:
+https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples
+
+API docs are available from the page with the Spring projects and then you can navigate to each project API
+
+
+For developing Rich Client Apps:
+
+https://github.com/naturalprogrammer/spring-lemon
+
 ----------------------------------------------------------------------
 
 Where to find docs e.g. "The authorize Tag" from the Security project:
