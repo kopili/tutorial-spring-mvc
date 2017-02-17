@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.naturalprogramming.spring.mvc.tutorial.dto.SignupForm;
+import com.naturalprogramming.spring.mvc.tutorial.mail.MailSender;
 import com.naturalprogramming.spring.mvc.tutorial.services.UserService;
 import com.naturalprogramming.spring.mvc.tutorial.util.MyUtil;
 import com.naturalprogramming.spring.mvc.tutorial.validators.SignupFormValidator;
@@ -25,13 +26,15 @@ public class RootController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RootController.class);
 	
+	private MailSender mailSender;
 	private UserService userService;
 	private SignupFormValidator signupFormValidator;
 
 	@Autowired
-	public RootController(UserService userService, SignupFormValidator signupFormValidator) {
+	public RootController(UserService userService, SignupFormValidator signupFormValidator, MailSender mailSender) {
 		this.userService = userService;
 		this.signupFormValidator = signupFormValidator;
+		this.mailSender = mailSender;
 	}
 
 	// Tell application to use custom validator. The InitBinder parameter is the
