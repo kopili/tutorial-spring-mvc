@@ -1,7 +1,12 @@
 package com.naturalprogramming.spring.mvc.tutorial.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +21,32 @@ public class User {
 
 	public static final int EMAIL_MAX = 250;
 	public static final int NAME_MAX = 50;
+
+	public static enum Role {
+		UNVERIFIED, BLOCKED, ADMIN
+	}
+
+	@Column(length = 16)
+	private String verificationCode;
+
+	public String getVerificationCode() {
+		return verificationCode;
+	}
+
+	public void setVerificationCode(String verificationCode) {
+		this.verificationCode = verificationCode;
+	}
+
+	@ElementCollection(fetch = FetchType.EAGER)
+	private Set<Role> roles = new HashSet<Role>();
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
