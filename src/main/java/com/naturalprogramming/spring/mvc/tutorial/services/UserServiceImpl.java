@@ -80,4 +80,18 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		return new UserDetailsImpl(user);
 	}
 
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public void verify(String verificationCode) {
+		long loggedInUserId = MyUtil.getSessionUser().getId();
+		User user = userRepository.findOne(loggedInUserId);
+		MyUtil.validate(user.getRoles().contains(Role.UNVERIFIED), "alreadyVerified");
+		MyUtil.validate(user.getVerificationCode().equals(verificationCode), "incorrect", "verification code");
+
+		user.getRoles().remove(Role.UNVERIFIED);
+		user.setVerificationCode(null);
+		userRepository.save(user);
+
+	}
+
 }
